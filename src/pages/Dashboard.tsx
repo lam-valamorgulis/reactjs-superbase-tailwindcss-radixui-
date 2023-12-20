@@ -1,5 +1,5 @@
 function Dashboard() {
-  return <p>TEST dashboard</p>;
+  return <div>TEST dashboard</div>;
 }
 
 export default Dashboard;
