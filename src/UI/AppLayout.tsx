@@ -4,8 +4,8 @@ import Header from "./Header";
 
 function AppLayout() {
   return (
-    <div className="bg-red-100 min-h-screen max-w-screen-xl m-auto flex flex-row">
-      <aside className="bg-green-100 w-60 ">
+    <div className="bg-red-100 min-h-screen max-w-screen-xxl m-auto flex flex-row">
+      <aside className="w-60 px-5 py-8">
         <SideBar />
       </aside>
       <main className="bg-yellow-100 flex-1">
