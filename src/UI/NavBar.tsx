@@ -6,8 +6,20 @@ function NavBar() {
     <nav>
       <ul className="flex flex-col">
         {NAVBAR.map((nav) => (
-          <li key={nav.label} className="p- hover:bg-zinc-100 round-sm">
-            <NavLink to={nav.link}>
+          <li
+            key={nav.label}
+            className="p-3 
+            "
+          >
+            <NavLink
+              className="flex flex-row gap-x-5 items-center
+              hover:bg-zinc-50 
+              hover:transition-all 
+              hover:rounded-lg 
+              hover:text-stone-950
+              duration-300"
+              to={nav.link}
+            >
               {nav.icon}
               <span>{nav.label}</span>
             </NavLink>

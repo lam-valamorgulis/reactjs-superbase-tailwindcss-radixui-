@@ -11,7 +11,9 @@ export const NAVBAR = [
   {
     label: "Home",
     link: "/dashboard",
-    icon: React.createElement(HiOutlineHome, { className: "w-6 h-6" }),
+    icon: React.createElement(HiOutlineHome, {
+      className: "w-6 h-6 hover:bg-red-100",
+    }),
   },
   {
     label: "Bookings",
