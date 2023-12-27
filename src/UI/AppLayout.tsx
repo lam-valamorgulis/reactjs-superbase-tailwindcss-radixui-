@@ -8,11 +8,11 @@ function AppLayout() {
       <aside className="w-96 p-8 border-r-2">
         <SideBar />
       </aside>
-      <main className="bg-yellow-100 flex-1">
+      <main className="flex-1">
         <header className="flex-1 bg-red-100">
           <Header />
         </header>
-        <div className="flex-1 px-16 pt-24 pb-20 min-h-full text-center">
+        <div className="flex-1 p-16 pb-20 min-h-full">
           <Outlet />
         </div>
       </main>
