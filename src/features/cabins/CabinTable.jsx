@@ -1,7 +1,7 @@
 export default function CabinTable() {
   return (
     <>
-      <table className="table-fixed bg-slate-50">
+      <table className="table-fixed">
         <thead>
           <tr>
             <th>Song</th>
