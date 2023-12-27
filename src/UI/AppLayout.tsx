@@ -12,7 +12,7 @@ function AppLayout() {
         <header className="flex-1 bg-red-100">
           <Header />
         </header>
-        <div className="flex-1">
+        <div className="flex-1 px-16 pt-24 pb-20 min-h-full text-center">
           <Outlet />
         </div>
       </main>

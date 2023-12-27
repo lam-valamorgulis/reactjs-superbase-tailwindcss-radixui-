@@ -8,7 +8,7 @@
   --color-brand-100: #e0e7ff;
   --color-brand-200: #c7d2fe;
   --color-brand-500: #6366f1;
-  --color-brand-600: #4f46e5;
+  --color-brand-600: hsl(243, 75%, 59%);
   --color-brand-700: #4338ca;
   --color-brand-800: #3730a3;
   --color-brand-900: #312e81;
@@ -110,17 +110,17 @@
     filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
   }
   svg {
-    width: 2.4rem;
-    height: 2.4rem;
-    color: var(--color-grey-600);
+    width: 3.4rem;
+    height: 3.4rem;
+    color: var(--color-grey-400);
     transition: all 0.3s;
   }
 }
 
 .active {
   color: var(--color-grey-900);
-  background-color: var(--color-grey-50);
-  border-radius: var(--border-radius-sm);
+  background-color: var(--color-grey-100);
+  border-radius: var(--border-radius-md);
 }
 
 .active:visited svg {
