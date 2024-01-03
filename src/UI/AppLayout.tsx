@@ -8,7 +8,7 @@ function AppLayout() {
       <aside className="w-96 p-8 border-r-2">
         <SideBar />
       </aside>
-      <main className="flex-1">
+      <main className="flex-1 bg-slate-50">
         <header className="flex-1 bg-red-100">
           <Header />
         </header>

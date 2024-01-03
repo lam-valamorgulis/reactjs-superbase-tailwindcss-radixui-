@@ -1,32 +1,48 @@
+import CabinRow from "./CabinRow";
+import useCabins from "./useCabins";
+import Spinner from "../../UI/Spinner";
+
 export default function CabinTable() {
+  const { isLoading, cabins } = useCabins();
+  if (isLoading) return <Spinner />;
+
   return (
-    <>
-      <table className="table-fixed">
+    <div className="h-screen pt-10">
+      <table className="table-fixed border-spacing-2 border border-slate-200 w-full text-left">
         <thead>
           <tr>
-            <th>Song</th>
-            <th>Artist</th>
-            <th>Year</th>
+            <th></th>
+            <th>
+              <div className="py-10 tracking-widest uppercase text-xxl">
+                Cabin
+              </div>
+            </th>
+            <th>
+              <div className="py-10 tracking-widest uppercase text-xxl">
+                Capacity
+              </div>
+            </th>
+            <th>
+              <div className="py-10 tracking-widest uppercase text-xxl">
+                price
+              </div>
+            </th>
+            <th>
+              <div className="py-10 tracking-widest uppercase text-xxl">
+                discount
+              </div>
+            </th>
+            <th></th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-            <td>Malcolm Lockyer</td>
-            <td>1961</td>
-          </tr>
-          <tr>
-            <td>Witchy Woman</td>
-            <td>The Eagles</td>
-            <td>1972</td>
-          </tr>
-          <tr>
-            <td>Shining Star</td>
-            <td>Earth, Wind, and Fire</td>
-            <td>1975</td>
-          </tr>
+        {/* get data from remote API */}
+        {/* creat a */}
+        <tbody className="bg-white">
+          {cabins.map((cabin) => (
+            <CabinRow key={cabin.id} cabin={cabin} />
+          ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }

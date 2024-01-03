@@ -38,3 +38,8 @@ export const NAVBAR = [
     icon: React.createElement(HiOutlineCog6Tooth, { className: "w-8 h-8" }),
   },
 ];
+
+export const formatCurrency = (value) =>
+  new Intl.NumberFormat("en", { style: "currency", currency: "USD" }).format(
+    value,
+  );
