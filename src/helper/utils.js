@@ -39,7 +39,31 @@ export const NAVBAR = [
   },
 ];
 
-export const formatCurrency = (value) =>
-  new Intl.NumberFormat("en", { style: "currency", currency: "USD" }).format(
-    value,
-  );
+export const formatCurrency = (value) => {
+  try {
+    // Use try-catch to handle potential errors
+    return new Intl.NumberFormat("en", {
+      style: "currency",
+      currency: "USD",
+    }).format(value);
+  } catch (error) {
+    // If an error occurs during formatting, return the original value
+    console.error("Error formatting currency:", error);
+    return value;
+  }
+};
+
+export const formatDate = (timestamp) => {
+  const oneWeekInMilliseconds = 7 * 24 * 60 * 60 * 1000; // 7 days * 24 hours/day * 60 minutes/hour * 60 seconds/minute * 1000 milliseconds/second
+  const newTimestamp = timestamp + oneWeekInMilliseconds;
+
+  const date = new Date(newTimestamp);
+
+  // Use toISOString to get the date in ISO 8601 format
+  const isoDateString = date.toISOString();
+
+  // Replace colons with URL-encoded colons
+  const formattedDate = isoDateString.replace(/:/g, "%3A");
+
+  return formattedDate;
+};

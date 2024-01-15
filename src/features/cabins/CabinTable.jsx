@@ -37,7 +37,7 @@ export default function CabinTable() {
         </thead>
         {/* get data from remote API */}
         {/* creat a */}
-        <tbody className="bg-white">
+        <tbody className="bg-white w-screen">
           {cabins.map((cabin) => (
             <CabinRow key={cabin.id} cabin={cabin} />
           ))}
