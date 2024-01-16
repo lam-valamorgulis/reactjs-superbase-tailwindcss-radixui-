@@ -1,7 +1,7 @@
 import { formatCurrency } from "../../helper/utils";
 import { HiPencil, HiSquare2Stack, HiTrash } from "react-icons/hi2";
 import { useDeleteCabin } from "./useDeleteCabin";
-import { useCreateCabin } from "./useCreateCabin";
+import useCreateCabin from "./useCreateCabin";
 import { useState } from "react";
 import CreateCabinForm from "./CreateCabinForm";
 
@@ -16,6 +16,7 @@ export default function CabinRow({ cabin }) {
     image,
     description,
   } = cabin;
+
   const { isDeleting, deleteCabin } = useDeleteCabin();
   const { isLoading, createCabin } = useCreateCabin();
 
@@ -36,10 +37,10 @@ export default function CabinRow({ cabin }) {
         <td className="text-center">
           <img
             src={image}
-            className="w-28 block object-cover aspect-[3/2] object-center	"
+            className="w-28 block object-cover aspect-[3/2] object-center"
           />
         </td>
-        <td className="font-bold">001</td>
+        <td className="font-bold">{name}</td>
         <td>Fits up to {maxCapacity} guests</td>
         <td className="font-bold tracking-widest">
           {formatCurrency(regularPrice)}
@@ -61,9 +62,11 @@ export default function CabinRow({ cabin }) {
           </div>
         </td>
       </tr>
-      <div className="w-screen bg-white">
-        {showForm && <CreateCabinForm cabinToEdit={cabin} />}
-      </div>
+      <tr className="w-full bg-white">
+        <td className="w-full bg-white">
+          {showForm && <CreateCabinForm cabinToEdit={cabin} />}
+        </td>
+      </tr>
     </>
   );
 }

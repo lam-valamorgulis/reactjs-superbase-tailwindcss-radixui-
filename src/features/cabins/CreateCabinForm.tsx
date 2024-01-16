@@ -1,10 +1,18 @@
 import FormRow from "../../UI/FormRow";
 import Button from "../../UI/Button";
 import { useForm } from "react-hook-form";
+
 import useCreateCabin from "./useCreateCabin";
+import useEditCabin from "./useEditCabin";
 
 export default function CreateCabinForm({ cabinToEdit = {} }) {
-  console.log(cabinToEdit);
+  const { isCreating, createCabin } = useCreateCabin();
+  const { isEditing, editCabin } = useEditCabin();
+  const isWorking = isCreating || isEditing;
+
+  const { id: editId, ...editValues } = cabinToEdit;
+  const isEditSession = Boolean(editId);
+
   const {
     register,
     handleSubmit,
@@ -15,14 +23,15 @@ export default function CreateCabinForm({ cabinToEdit = {} }) {
     defaultValues: cabinToEdit ? cabinToEdit : {},
   });
 
-  const { isLoading, createCabin } = useCreateCabin();
-
+  // handle form submit
   function onSubmit(data) {
-    // console.log(data, data.image[0]);
-    const img = data.image[0];
-    // console.log(img);
-    createCabin({ ...data, image: img });
+    const image = typeof data.image === "string" ? data.image : data.image[0];
+
+    if (isEditSession)
+      editCabin({ newCabinData: { ...data, image }, id: editId });
+    else createCabin({ ...data, image: image });
   }
+
   function onError(errors) {
     console.log(errors);
   }
@@ -91,7 +100,7 @@ export default function CreateCabinForm({ cabinToEdit = {} }) {
           })}
         />
       </FormRow>
-      <FormRow label="Cabin photo">
+      <FormRow label="Cabin photo" error={errors?.image?.message}>
         <input
           type="file"
           className="block w-full text-lg text-slate-500
@@ -101,13 +110,15 @@ export default function CreateCabinForm({ cabinToEdit = {} }) {
       file:bg-[#2563eb] file:text-slate-200	
       hover:file:bg-[#4338ca]"
           {...register("image", {
-            required: "This field is required",
+            required: isEditSession ? false : "This field is required",
           })}
         />
       </FormRow>
       <div className="flex justify-end pt-6 pb-10 gap-4">
         <Button type="secondary">Cancel</Button>
-        <Button type="primary">Create new cabin</Button>
+        <Button type="primary">
+          {isEditSession ? "Edit cabin" : "Create new cabin"}
+        </Button>
       </div>
     </form>
   );
